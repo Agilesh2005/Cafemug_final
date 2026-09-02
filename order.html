@@ -48,15 +48,15 @@ const fallback = document.getElementById("fallbackLink");
 fallback.href = orderUrl;
 frame.src = orderUrl;
 frame.addEventListener("load", () => loading.classList.add("hidden"));
+
 const GUARD_HASH = "#guard";
 function armBackGuard() {
   history.pushState({ orderPage: true }, "", location.pathname + location.search + GUARD_HASH);
 }
 armBackGuard();
 window.addEventListener("popstate", () => {
-  // Re-arm immediately so rapid/repeated back actions can't slip past it.
-  armBackGuard();
-  location.href = "index.html";
+  
+  location.replace("index.html");
 });
 </script>
 </body>
